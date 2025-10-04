@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<title>My Example</title>
+
+<!-- Place the following CSS in your <head> or stylesheet -->
+<style>
+/* This is an optional body style to provide a background for the page */
+body {
+    background-color: #f9fafb;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+}
+
+/* === Grid Container for the Cards === */
+.cards-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+}
+
+/* === Base Card Style === */
+.he-card {
+    --he-radius: 12px;
+    --he-base-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+    
+    background: #ffffff;
+    border-radius: var(--he-radius);
+    box-shadow: var(--he-base-shadow);
+    overflow: hidden;
+
+    /* Universal transition for all hover effects */
+    transition-property: transform, box-shadow, border-color;
+    transition-duration: 0.25s;
+    transition-timing-function: ease-in-out;
+}
+
+.he-card-link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+}
+
+.he-card-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.he-card-content {
+    padding: 1.5rem;
+}
+
+.he-card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 0.25rem;
+}
+
+.he-card-description {
+    font-size: 1rem;
+    color: #4b5563;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* === HOVER EFFECT MODIFIERS === */
+
+/* 1. Lift Up Effect */
+.he-card.hover-lift:hover {
+    transform: translateY(-5px);
+}
+
+/* 2. Shadow Grow Effect */
+.he-card.hover-shadow:hover {
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+}
+
+/* 3. Scale Effect */
+.he-card.hover-scale:hover {
+    transform: scale(1.04);
+}
+
+/* 4. Glow Effect */
+.he-card.hover-glow:hover {
+    box-shadow: 0 0 15px 0 rgba(79, 70, 229, 0.4);
+}
+
+/* 5. Border Color Change Effect */
+.he-card.hover-border {
+    border: 3px solid transparent;
+}
+.he-card.hover-border:hover {
+    border-color: #4f46e5;
+}
+</style>
+
+<!-- Place the following HTML in your <body> -->
+<div class="cards-grid-container">
+    
+    <!-- Card 1: Lift -->
+    <article class="he-card hover-lift">
+        <a href="#" class="he-card-link">
+            <!-- Image from picsum.photos. Replace with your own. -->
+            <img class="he-card-image" src="https://picsum.photos/id/23/600/400" alt="Desk setup with laptop and design tools.">
+            <div class="he-card-content">
+                <h3 class="he-card-title">Lift Effect</h3>
+                <p class="he-card-description">Subtly rises on hover for a clean, professional feel.</p>
+            </div>
+        </a>
+    </article>
+
+    <!-- Card 2: Shadow Grow -->
+    <article class="he-card hover-shadow">
+        <a href="#" class="he-card-link">
+            <!-- Image from picsum.photos. Replace with your own. -->
+            <img class="he-card-image" src="https://picsum.photos/id/17/600/400" alt="Mountain landscape at dusk.">
+            <div class="he-card-content">
+                <h3 class="he-card-title">Shadow Effect</h3>
+                <p class="he-card-description">The shadow expands to create a pronounced depth effect.</p>
+            </div>
+        </a>
+    </article>
+    
+    <!-- Card 3: Scale -->
+    <article class="he-card hover-scale">
+        <a href="#" class="he-card-link">
+            <!-- Image from picsum.photos. Replace with your own. -->
+            <img class="he-card-image" src="https://picsum.photos/id/40/600/400" alt="City street with traffic and bright lights.">
+            <div class="he-card-content">
+                <h3 class="he-card-title">Scale Effect</h3>
+                <p class="he-card-description">Enlarges slightly to grab the user's attention.</p>
+            </div>
+        </a>
+    </article>
+    
+    <!-- Card 4: Glow -->
+    <article class="he-card hover-glow">
+        <a href="#" class="he-card-link">
+            <!-- Image from picsum.photos. Replace with your own. -->
+            <img class="he-card-image" src="https://picsum.photos/id/29/600/400" alt="Modern office interior.">
+            <div class="he-card-content">
+                <h3 class="he-card-title">Glow Effect</h3>
+                <p class="he-card-description">Adds a soft, colored outer glow for a modern look.</p>
+            </div>
+        </a>
+    </article>
+    
+    <!-- Card 5: Border -->
+    <article class="he-card hover-border">
+        <a href="#" class="he-card-link">
+            <!-- Image from picsum.photos. Replace with your own. -->
+            <img class="he-card-image" src="https://picsum.photos/id/48/600/400" alt="Industrial building exterior.">
+            <div class="he-card-content">
+                <h3 class="he-card-title">Border Effect</h3>
+                <p class="he-card-description">A colored border animates into view on hover.</p>
+            </div>
+        </a>
+    </article>
+
+</div>

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Generate QR Code{% endblock %}
+
+{% block content %}
+<div style="max-width: 500px; margin: 40px auto; padding: 30px; background-color: #f9f9f9; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+
+  <h2 style="color: #2c3e50; text-align: center; margin-bottom: 25px;">Generate QR Code</h2>
+
+  <form method="POST" style="display: flex; flex-direction: column; gap: 15px;">
+    <label for="student_id" style="font-weight: 600; color: #34495e;">Student ID:</label>
+    <input type="text" id="student_id" name="student_id" required 
+           style="padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 1rem;">
+
+    <label for="student_name" style="font-weight: 600; color: #34495e;">Student Name:</label>
+    <input type="text" id="student_name" name="student_name" required 
+           style="padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 1rem;">
+
+    <button type="submit" 
+            style="margin-top: 20px; background-color: #3498db; color: white; padding: 12px; border: none; border-radius: 6px; font-weight: 700; cursor: pointer; transition: background-color 0.3s ease;">
+      Generate QR
+    </button>
+  </form>
+
+  {% if qr_code %}
+  <div style="margin-top: 30px; text-align: center;">
+    <h3 style="color: #2c3e50; margin-bottom: 15px;">QR Code for {{ student_name }} ({{ student_id }})</h3>
+    <img src="data:image/png;base64,{{ qr_code }}" alt="QR Code" style="max-width: 100%; height: auto; border: 2px solid #3498db; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" />
+  </div>
+  {% endif %}
+
+</div>
+{% endblock %}

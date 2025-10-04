@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}Mark Attendance{% endblock %}
+
+{% block content %}
+<div style="max-width: 600px; margin: 40px auto; padding: 30px; background-color: #f9f9f9; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+
+  <h2 style="color: #2c3e50; text-align: center; margin-bottom: 25px;">Mark Attendance</h2>
+
+  <!-- Form for manual entry -->
+  <form method="POST" id="attendanceForm" style="display: flex; flex-direction: column; gap: 15px;">
+    <label for="student_id" style="font-weight: 600; color: #34495e;">Student ID:</label>
+    <input type="text" name="student_id" id="student_id" required
+           style="padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 1rem;">
+
+    <label for="student_name" style="font-weight: 600; color: #34495e;">Student Name:</label>
+    <input type="text" name="student_name" id="student_name" required
+           style="padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 1rem;">
+
+    <button type="submit"
+            style="margin-top: 20px; background-color: #27ae60; color: white; padding: 12px; border: none; border-radius: 6px; font-weight: 700; cursor: pointer; transition: background-color 0.3s ease;">
+      Mark Attendance
+    </button>
+  </form>
+
+  <hr style="margin: 40px 0; border: none; border-top: 1px solid #ddd;">
+
+  <h3 style="color: #2c3e50; text-align: center; margin-bottom: 20px;">Or Scan QR Code to Auto-fill</h3>
+
+  <div id="reader" style="width: 300px; margin: 0 auto; border: 2px solid #3498db; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"></div>
+
+</div>
+
+<script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+<script>
+    function onScanSuccess(decodedText, decodedResult) {
+        // decodedText contains QR code data, e.g. "123,John Doe"
+        console.log(`Scan result: ${decodedText}`);
+
+        let parts = decodedText.split(',');
+        if(parts.length === 2){
+            document.getElementById('student_id').value = parts[0];
+            document.getElementById('student_name').value = parts[1];
+        } else {
+            alert("Invalid QR code format!");
+        }
+
+        // Stop scanning after successful scan
+        html5QrcodeScanner.clear();
+    }
+
+    function onScanFailure(error) {
+        // ignore scan failures for now
+    }
+
+    let html5QrcodeScanner = new Html5QrcodeScanner(
+        "reader", { fps: 10, qrbox: 250 });
+    html5QrcodeScanner.render(onScanSuccess, onScanFailure);
+</script>
+{% endblock %}
